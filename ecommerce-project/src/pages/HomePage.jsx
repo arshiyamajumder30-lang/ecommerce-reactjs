@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 import { Header } from '../compo/Header';
 import './HomePage.css';
 //to import the css for HomePage
@@ -10,8 +10,13 @@ export function HomePage(){
 //returs all html code from home pg(copy code from idex.html)
 //wrap in fragment to return only 1 elementss
 
+axios.get('http://localhost:3000/api/products') 
+.then((response)=>{
+  response.data;
+} ) //data from backend saved directly into response
+
 //to get data from backend
-fetch('http://localhost:3000/api/products')
+/* fetch('http://localhost:3000/api/products')
 
 //func in .then() runs when the fetch() code finishes in future & backend gives a response
 
@@ -21,7 +26,7 @@ response.json().then((data) => {
 console.log(data); //displays data we get from backends
 })
 }
-)
+) */
 
 
 return(
