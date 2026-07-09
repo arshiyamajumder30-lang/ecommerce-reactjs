@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 import { Header } from '../compo/Header';
 import './HomePage.css';
 //to import the css for HomePage
@@ -9,12 +9,22 @@ import './HomePage.css';
 //creates compo for the homepg
 export function HomePage(){
 //returs all html code from home pg(copy code from idex.html)
-//wrap in fragment to return only 1 elementss
+//wrap in fragment to return only 1 elements
+
+const[products, setProducts] = useState([]);
+const[cart ,setCart] = useState([]);
 useEffect(()=>{
 axios.get('http://localhost:3000/api/products') 
 .then((response)=>{
-  response.data;
-} ) //data from backend saved directly into response
+  setProducts(response.data); //useState to generate html
+} ) ;//data from backend saved directly into response
+
+//to get the cart quantity data from backend in the Header
+axios.get('http://localhost:3000/api/cart-items')
+.then((response)=>{
+  setCart(response.data);
+  
+})
 
 }, [] )
 
@@ -32,11 +42,11 @@ console.log(data); //displays data we get from backends
 }
 ) */
 
-
+//<Header> add the cart prop to pass the cart data from useState to the Header where cart quatity is present ie <Header cart = {cart}/> 
 return(
 <>
 <title>Ecommerce Project</title>
-<Header />
+<Header cart = {cart}/> 
     <div className="home-page">
       <div className="products-grid">
         {products.map((product) => {

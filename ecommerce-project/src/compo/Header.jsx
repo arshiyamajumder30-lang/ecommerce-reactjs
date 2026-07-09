@@ -2,8 +2,14 @@ import { Link } from 'react-router';
 //used in place of <Link> tags to go to another pg w/o reloading - spcl JS feature
 
 import './header.css'; //imports css of header
+//passing the cart data thru props from useState which is fetched from backend in the header compo to get the cart quantity
+export  function Header({cart}){ //cart is the prop here from HomePage.jsx
+let totalQuantity = 0;
+//tp calculate cart quantity - loop thru the cart. each cart item passed as param to the inner func
+cart.forEach((cartItem)=>{
+  totalQuantity+= cartItem.quantity;
+});
 
-export  function Header(){
     return(
  <div className ="header">
       <div className ="left-section">
@@ -31,7 +37,7 @@ export  function Header(){
 
         <Link className="cart-link header-link" to="/checkout">
           <img className="cart-icon" src="images/icons/cart-icon.png" />
-          <div className="cart-quantity">3</div>
+          <div className="cart-quantity">{totalQuantity}</div>
           <div className="cart-text">Cart</div>
         </Link>
       </div>
