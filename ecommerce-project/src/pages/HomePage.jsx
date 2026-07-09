@@ -9,6 +9,21 @@ import { products } from '../../start-code/data/products'; //imports products ar
 export function HomePage(){
 //returs all html code from home pg(copy code from idex.html)
 //wrap in fragment to return only 1 elementss
+
+//to get data from backend
+fetch('http://localhost:3000/api/products')
+
+//func in .then() runs when the fetch() code finishes in future & backend gives a response
+
+.then((response) => { //this param contains response from the backend
+//console.log(response); //func to be executed
+response.json().then((data) => {
+console.log(data); //displays data we get from backends
+})
+}
+)
+
+
 return(
 <>
 <title>Ecommerce Project</title>
