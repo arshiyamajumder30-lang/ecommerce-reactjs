@@ -7,24 +7,27 @@ import './HomePage.css';
 
 //has React code for the home page
 //creates compo for the homepg
-export function HomePage(){
+//{cart} data from app state passed thru prop
+
+export function HomePage({cart}){
 //returs all html code from home pg(copy code from idex.html)
 //wrap in fragment to return only 1 elements
 
 const[products, setProducts] = useState([]);
-const[cart ,setCart] = useState([]);
+//const[cart ,setCart] = useState([]); -> move this cart useState up by shiftig to app compo
 useEffect(()=>{
 axios.get('http://localhost:3000/api/products') 
 .then((response)=>{
   setProducts(response.data); //useState to generate html
 } ) ;//data from backend saved directly into response
 
+//cart state up to App load cart in both checkout & homepage 
 //to get the cart quantity data from backend in the Header
-axios.get('http://localhost:3000/api/cart-items')
+/*axios.get('http://localhost:3000/api/cart-items')
 .then((response)=>{
   setCart(response.data);
   
-})
+})*/
 
 }, [] )
 
