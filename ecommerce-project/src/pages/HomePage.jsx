@@ -1,19 +1,23 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import { Header } from '../compo/Header';
 import './HomePage.css';
 //to import the css for HomePage
-import { products } from '../../start-code/data/products'; //imports products array from product.js file 
+//import { products } from '../../start-code/data/products'; //imports products array from product.js file 
 
 //has React code for the home page
 //creates compo for the homepg
 export function HomePage(){
 //returs all html code from home pg(copy code from idex.html)
 //wrap in fragment to return only 1 elementss
-
+useEffect(()=>{
 axios.get('http://localhost:3000/api/products') 
 .then((response)=>{
   response.data;
 } ) //data from backend saved directly into response
+
+}, [] )
+
 
 //to get data from backend
 /* fetch('http://localhost:3000/api/products')
