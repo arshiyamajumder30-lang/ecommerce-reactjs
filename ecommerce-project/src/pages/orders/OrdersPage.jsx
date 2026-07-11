@@ -1,6 +1,6 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
-import { Header } from '../compo/Header';
+import { Header } from '../../compo/Header';
 import './OrdersPage.css';
 import { useState, useEffect, Fragment } from 'react';
 
