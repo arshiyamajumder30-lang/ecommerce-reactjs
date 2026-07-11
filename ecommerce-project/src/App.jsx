@@ -26,7 +26,7 @@ axios.get('http://localhost:3000/api/cart-items?expand=product') //expand=produc
 <Routes>
 <Route path="/" element={<HomePage cart={cart}/>}></Route> 
 <Route path="checkout" element={<CheckoutPage cart={cart}/>}></Route>
-<Route path="orders" element={<OrdersPage />}></Route>
+<Route path="orders" element={<OrdersPage  cart={cart}/>}></Route>
 </Routes>
 //displays HomePage on going to the given url path
   );
