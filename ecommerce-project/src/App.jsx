@@ -11,12 +11,14 @@ function App() {
 const [cart ,setCart] = useState([]); //moved state up for cart data from backed
 
 //useEffect - so that functio runs only once after creation
+//using async await
 useEffect(()=>{
-axios.get('http://localhost:3000/api/cart-items?expand=product') //expand=product is a query parameter that causes the backend to expand the cart w product details
-.then((response)=>{
+const fetchAppData = async() =>{
+const response = await axios.get('http://localhost:3000/api/cart-items?expand=product') //expand=product is a query parameter that causes the backend to expand the cart w product details
+//.then((response)=>{
   setCart(response.data);
-  
-});
+}
+fetchAppData();
 }, [])
 
 

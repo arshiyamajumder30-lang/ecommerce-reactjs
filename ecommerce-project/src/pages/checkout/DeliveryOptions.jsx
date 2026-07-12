@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-export function DeliveryOptions({deliveryOptions},{cartItem}){
+export function DeliveryOptions({deliveryOptions,cartItem}){
     return(
          <div className="delivery-options" >
                                 <div className="delivery-options-title">

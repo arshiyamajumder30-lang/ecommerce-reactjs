@@ -13,21 +13,28 @@ export function CheckoutPage({cart}){
 const [paymentSummary, setPaymentSummary]= useState([]);
 //create state to save the paymetSummary
 
+//use async await to fetch data
+useEffect(()=>{
+  const fetchCheckoutData = async ()=>{
+    let response = await axios.get('http://localhost:3000/api/delivery-options?expand=estimatedDeliveryTime')
+    setDeliveryOptions(response.data);
+  
+
+
 
 //useEffect fetches the data from backend
-useEffect(()=>{
+/*useEffect(()=>{
 axios.get('http://localhost:3000/api/delivery-options?expand=estimatedDeliveryTime')
 //adds query param for est delivery time
 .then((response)=>{
 setDeliveryOptions(response.data)
-});
+});*/
 
-//to get backend data for payment summary
-axios.get('http://localhost:3000/api/payment-summary')
-  .then((response)=>{
+//to get backend data for payment summary use asyc await
+  response = await axios.get('http://localhost:3000/api/payment-summary')
     setPaymentSummary(response.data)
-  })
-
+  }
+ fetchCheckoutData();
 },[])
 
 
