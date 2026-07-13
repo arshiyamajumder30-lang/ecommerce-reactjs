@@ -10,7 +10,7 @@ import './HomePage.css';
 //creates compo for the homepg
 //{cart} data from app state passed thru prop
 
-export function HomePage({cart}){
+export function HomePage({cart, loadCart}){
 //returs all html code from home pg(copy code from idex.html)
 //wrap in fragment to return only 1 elements
 
@@ -52,7 +52,7 @@ return(
 <title>Ecommerce Project</title>
 <Header cart = {cart}/> 
     <div className="home-page">
-    <ProductsGrid products = {products}/> 
+    <ProductsGrid products = {products} loadCart={loadCart} /> 
 </div>
 </>
 );

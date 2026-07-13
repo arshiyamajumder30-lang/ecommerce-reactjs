@@ -10,24 +10,25 @@ function App() {
 
 const [cart ,setCart] = useState([]); //moved state up for cart data from backed
 
+const loadCart = async() => {
+const response = await axios.get('http://localhost:3000/api/cart-items?expand=product')//expand=product is a query parameter that causes the backend to expand the cart w product details
+//.then((response)=>{
+setCart(response.data);
+};
 //useEffect - so that functio runs only once after creation
 //using async await
+
 useEffect(()=>{
-const fetchAppData = async() =>{
-const response = await axios.get('http://localhost:3000/api/cart-items?expand=product') //expand=product is a query parameter that causes the backend to expand the cart w product details
-//.then((response)=>{
-  setCart(response.data);
-}
-fetchAppData();
-}, [])
+ loadCart();
+}, []);
 
 
   return (
     //inside <App> add <Routes> component 
 //path="/" -> index
 <Routes>
-<Route path="/" element={<HomePage cart={cart}/>}></Route> 
-<Route path="checkout" element={<CheckoutPage cart={cart}/>}></Route>
+<Route path="/" element={<HomePage cart={cart} loadCart={loadCart} />}></Route> 
+<Route path="checkout" element={<CheckoutPage cart={cart} />}></Route>
 <Route path="orders" element={<OrdersPage  cart={cart}/>}></Route>
 </Routes>
 //displays HomePage on going to the given url path
