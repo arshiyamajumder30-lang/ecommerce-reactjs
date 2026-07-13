@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { DeliveryOptions } from "./DeliveryOptions";
 
-export function OrderSummary({cart,deliveryOptions}){
+export function OrderSummary({cart,deliveryOptions, loadCart}){
     return(
          <div className="order-summary">
             {cart.map((cartItem)=> { //generates html in react from backend
@@ -46,7 +46,7 @@ export function OrderSummary({cart,deliveryOptions}){
         
         
                       <DeliveryOptions deliveryOptions={deliveryOptions} 
-                      cartItem={cartItem}/>
+                      cartItem={cartItem} loadCart={loadCart}/>
                     </div>
                   </div>
               );
