@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import axios from "axios";
 import { DeliveryOptions } from "./DeliveryOptions";
 
 export function OrderSummary({cart,deliveryOptions, loadCart}){
@@ -10,7 +11,19 @@ export function OrderSummary({cart,deliveryOptions, loadCart}){
               return deliveryOption.id === cartItem.deliveryOptionId;
             })
            //matching deliveryOption will be saved i the variable
-        
+         
+           //delete item from cart
+           const deleteCartItem = async ()=>{
+            await axios.delete(`http://localhost:3000/api/cart-items/${cartItem.productId}`);
+            await loadCart();
+           };
+
+           const updateCartItem = async ()=>{
+            await axios.put(`http://localhost:3000/api/cart-items/${cartItem.productId}`, {
+              quantity : Number(cartItem.quantity)+1 
+           })
+           await loadCart();
+           };
         
             //loops thru cart using .map() & for each cartItem return this html to display cartItem o checkout pg
               return(
@@ -34,10 +47,11 @@ export function OrderSummary({cart,deliveryOptions, loadCart}){
                           <span>
                             Quantity: <span className="quantity-label">{cartItem.quantity}</span>
                           </span>
-                          <span className="update-quantity-link link-primary">
+                          <span className="update-quantity-link link-primary"
+                          onClick={updateCartItem}>
                             Update
                           </span>
-                          <span className="delete-quantity-link link-primary">
+                          <span className="delete-quantity-link link-primary" onClick={deleteCartItem}>
                             Delete
                           </span>
                         </div>
