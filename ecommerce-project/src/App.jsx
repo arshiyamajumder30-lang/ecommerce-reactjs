@@ -29,7 +29,7 @@ useEffect(()=>{
 <Routes>
 <Route path="/" element={<HomePage cart={cart} loadCart={loadCart} />}></Route> 
 <Route path="checkout" element={<CheckoutPage cart={cart} loadCart={loadCart}/>}></Route>
-<Route path="orders" element={<OrdersPage  cart={cart}/>}></Route>
+<Route path="orders" element={<OrdersPage  cart={cart} />}></Route>
 </Routes>
 //displays HomePage on going to the given url path
   );

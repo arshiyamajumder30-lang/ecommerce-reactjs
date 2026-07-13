@@ -4,10 +4,16 @@ import { Header } from '../../compo/Header';
 import './OrdersPage.css';
 import { useState, useEffect, Fragment } from 'react';
 
+
+
 export function OrdersPage({cart}){
 
 //create state to save the orders
 const [orders, setOrders] = useState([]);
+
+
+
+
 
 //fetch backend data for orders
 useEffect(()=>{
@@ -74,7 +80,9 @@ return(
               </div>
               <button className="buy-again-button button-primary">
                 <img className="buy-again-icon" src="images/icons/buy-again.png" />
-                <span className="buy-again-message">Add to Cart</span>
+                <span className="buy-again-message"
+              
+                >Add to Cart</span>
               </button>
             </div>
 
