@@ -6,7 +6,7 @@ export function PaymentSummary({paymentSummary, loadCart}){
 const createOrder = async ()=>{
 
   //post used to create a order
-await axios.post('http://localhost:3000/api/orders');
+await axios.post('https://ecommerce-backend-cm3m.onrender.com/api/orders');
 await loadCart();
  navigate('/orders')
 };

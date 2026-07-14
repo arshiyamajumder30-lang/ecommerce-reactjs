@@ -17,7 +17,7 @@ const [searchTerm, setSearchTerm] = useState("");
 const[products, setProducts] = useState([]);
 //const[cart ,setCart] = useState([]); -> move this cart useState up by shiftig to app compo
 useEffect(()=>{
-axios.get('http://localhost:3000/api/products') 
+axios.get('https://ecommerce-backend-cm3m.onrender.com/api/products') 
 .then((response)=>{
   setProducts(response.data); //useState to generate html
 } ) ;//data from backend saved directly into response
@@ -25,7 +25,7 @@ axios.get('http://localhost:3000/api/products')
 
 //cart state up to App load cart in both checkout & homepage 
 //to get the cart quantity data from backend in the Header
-/*axios.get('http://localhost:3000/api/cart-items')
+/*axios.get('https://ecommerce-backend-cm3m.onrender.com/api/cart-items')
 .then((response)=>{
   setCart(response.data);
   
@@ -35,7 +35,7 @@ axios.get('http://localhost:3000/api/products')
 
 
 //to get data from backend
-/* fetch('http://localhost:3000/api/products')
+/* fetch('https://ecommerce-backend-cm3m.onrender.com/api/products')
 
 //func in .then() runs when the fetch() code finishes in future & backend gives a response
 

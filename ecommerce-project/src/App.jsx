@@ -11,7 +11,7 @@ function App() {
 const [cart ,setCart] = useState([]); //moved state up for cart data from backed
 
 const loadCart = async() => {
-const response = await axios.get('http://localhost:3000/api/cart-items?expand=product')//expand=product is a query parameter that causes the backend to expand the cart w product details
+const response = await axios.get('https://ecommerce-backend-cm3m.onrender.com/api/cart-items?expand=product')//expand=product is a query parameter that causes the backend to expand the cart w product details
 //.then((response)=>{
 setCart(response.data);
 };

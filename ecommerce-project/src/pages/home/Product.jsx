@@ -7,7 +7,7 @@ export function Product({product, loadCart}){
      const [quantity, setQuantity] = useState(1);
 
   const addToCart = async ()=>{
-            await axios.post('http://localhosT:3000/api/cart-items',{
+            await axios.post('https://ecommerce-backend-cm3m.onrender.com/api/cart-items',{
               productId : product.id,
               quantity : quantity
 

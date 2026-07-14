@@ -14,12 +14,12 @@ export function OrderSummary({cart,deliveryOptions, loadCart}){
          
            //delete item from cart
            const deleteCartItem = async ()=>{
-            await axios.delete(`http://localhost:3000/api/cart-items/${cartItem.productId}`);
+            await axios.delete(`https://ecommerce-backend-cm3m.onrender.com/api/cart-items/${cartItem.productId}`);
             await loadCart();
            };
 
            const updateCartItem = async ()=>{
-            await axios.put(`http://localhost:3000/api/cart-items/${cartItem.productId}`, {
+            await axios.put(`https://ecommerce-backend-cm3m.onrender.com/api/cart-items/${cartItem.productId}`, {
               quantity : Number(cartItem.quantity)+1 
            })
            await loadCart();

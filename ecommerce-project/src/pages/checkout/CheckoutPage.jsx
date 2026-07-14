@@ -16,7 +16,7 @@ const [paymentSummary, setPaymentSummary]= useState([]);
 //use async await to fetch data
 useEffect(()=>{
   const fetchCheckoutData = async ()=>{
-    let response = await axios.get('http://localhost:3000/api/delivery-options?expand=estimatedDeliveryTime')
+    let response = await axios.get('https://ecommerce-backend-cm3m.onrender.com/api/delivery-options?expand=estimatedDeliveryTime')
     setDeliveryOptions(response.data);
   
 
@@ -24,14 +24,14 @@ useEffect(()=>{
 
 //useEffect fetches the data from backend
 /*useEffect(()=>{
-axios.get('http://localhost:3000/api/delivery-options?expand=estimatedDeliveryTime')
+axios.get('https://ecommerce-backend-cm3m.onrender.com/api/delivery-options?expand=estimatedDeliveryTime')
 //adds query param for est delivery time
 .then((response)=>{
 setDeliveryOptions(response.data)
 });*/
 
 //to get backend data for payment summary use asyc await
-  response = await axios.get('http://localhost:3000/api/payment-summary')
+  response = await axios.get('https://ecommerce-backend-cm3m.onrender.com/api/payment-summary')
     setPaymentSummary(response.data)
   }
  fetchCheckoutData();

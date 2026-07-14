@@ -17,7 +17,7 @@ const [orders, setOrders] = useState([]);
 
 //fetch backend data for orders
 useEffect(()=>{
-  axios.get('http://localhost:3000/api/orders?expand=products') //use query param to add pdt details to be fetched with the orders data
+  axios.get('https://ecommerce-backend-cm3m.onrender.com/api/orders?expand=products') //use query param to add pdt details to be fetched with the orders data
   .then((response)=>{
 setOrders(response.data);
   });
