@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 
 import './header.css'; //imports css of header
 //passing the cart data thru props from useState which is fetched from backend in the header compo to get the cart quantity
-export  function Header({cart}){ //cart is the prop here from HomePage.jsx
+export  function Header({cart, searchTerm, setSearchTerm}){ //cart is the prop here from HomePage.jsx
+  console.log(searchTerm)
 let totalQuantity = 0;
 //tp calculate cart quantity - loop thru the cart. each cart item passed as param to the inner func
 cart.forEach((cartItem)=>{
@@ -22,7 +23,11 @@ cart.forEach((cartItem)=>{
       </div>
 
       <div className="middle-section">
-        <input className="search-bar" type="text" placeholder="Search" />
+        <input className="search-bar" type="text" placeholder="Search" value={searchTerm}
+        onChange={(e)=>
+          setSearchTerm(e.target.value)
+        }
+        />
 
         <button className="search-button">
           <img className="search-icon" src="images/icons/search-icon.png" />

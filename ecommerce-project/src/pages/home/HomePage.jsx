@@ -13,7 +13,7 @@ import './HomePage.css';
 export function HomePage({cart, loadCart}){
 //returs all html code from home pg(copy code from idex.html)
 //wrap in fragment to return only 1 elements
-
+const [searchTerm, setSearchTerm] = useState("");
 const[products, setProducts] = useState([]);
 //const[cart ,setCart] = useState([]); -> move this cart useState up by shiftig to app compo
 useEffect(()=>{
@@ -21,6 +21,7 @@ axios.get('http://localhost:3000/api/products')
 .then((response)=>{
   setProducts(response.data); //useState to generate html
 } ) ;//data from backend saved directly into response
+
 
 //cart state up to App load cart in both checkout & homepage 
 //to get the cart quantity data from backend in the Header
@@ -50,9 +51,9 @@ console.log(data); //displays data we get from backends
 return(
 <>
 <title>Ecommerce Project</title>
-<Header cart = {cart}/> 
+<Header cart = {cart} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> 
     <div className="home-page">
-    <ProductsGrid products = {products} loadCart={loadCart} /> 
+    <ProductsGrid products = {products} loadCart={loadCart} searchTerm ={searchTerm} setSearchTerm={setSearchTerm} /> 
 </div>
 </>
 );
